@@ -4080,7 +4080,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap', 'ui.bootstrap.p
           'size': modal.size,
           'index': topModalIndex,
           'animate': 'animate',
-          'ng-style': '{\'z-index\': 1050 + index*10, display: \'block\'}',
+          'ng-style': '{\'z-index\': 1050 + $$topModalIndex*10, display: \'block\'}',
           'tabindex': -1,
           'uib-modal-animation-class': 'fade',
           'modal-in-class': 'in'
@@ -4091,6 +4091,9 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap', 'ui.bootstrap.p
 
         if (modal.animation) {
           angularDomEl.attr('modal-animation', 'true');
+        }
+        if (modal.scope) {
+          modal.scope.$$topModalIndex = topModalIndex;
         }
 
         appendToElement.addClass(modalBodyClass);
